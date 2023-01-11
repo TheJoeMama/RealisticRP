@@ -1,0 +1,15 @@
+"realisticrp"
+{
+    "base"   "sandbox"
+    "title"  "RealisticRP"
+    "version"   "1.0"
+    "menusystem"	"1"
+
+    "author_name"   "Joe"
+    "author_email"  ""
+    "author_url"    ""
+
+    "icon"  ""
+    "info"  ""
+    "hide"  "0"
+}
