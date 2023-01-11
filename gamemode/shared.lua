@@ -3,15 +3,17 @@ GM.Author = "Joe"
 GM.Email = ""
 GM.Website = ""
 DeriveGamemode( "sandbox" )
-TessaGameMode = {}
+RealisticRP = {}
+RealisticRP.Config = RealisticRP.Config or {}
 
 local mainfolder = GM.FolderName .. "/gamemode/modules/"
+local configfolder = GM.FolderName .. "/gamemode/config/"
 
-local function loadfiles(folder)
+local function loadfiles(startfolder, folder)
     if folder then
-        folder = mainfolder .. folder .. "/"
+        folder = startfolder .. folder .. "/"
     else
-        folder = mainfolder
+        folder = startfolder
     end
     -- sv files
     if SERVER then
@@ -36,8 +38,18 @@ end
 
 local _,direcs = file.Find(mainfolder .. "*", "LUA")
 
-loadfiles() -- for files outside of folders
+loadfiles(mainfolder) -- for files outside of folders
 
 for _,folders in SortedPairs(direcs) do -- for the module system
-    loadfiles(folders)
+    loadfiles(mainfolder, folders)
+end
+
+---------------------[Configs]
+
+local _,direcs = file.Find(configfolder .. "*", "LUA")
+
+loadfiles(mainfolder) -- for files outside of folders
+
+for _,folders in SortedPairs(direcs) do -- for the module system
+    loadfiles(mainfolder, folders)
 end
